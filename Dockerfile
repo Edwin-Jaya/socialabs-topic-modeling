@@ -8,6 +8,15 @@ ENV PYTHONDONTWRITEBYTECODE=1
 # Set the working directory in the container
 WORKDIR /app
 
+# Install build dependencies
+RUN apt-get update && apt-get install -y --no-install-recommends \
+  gcc \
+  g++ \
+  make \
+  python3-dev \
+  libpython3-dev \
+  && rm -rf /var/lib/apt/lists/*
+  
 # Copy the requirements file into the container
 COPY requirements.txt .
 
