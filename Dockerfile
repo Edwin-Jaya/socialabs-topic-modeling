@@ -18,18 +18,24 @@ RUN pip install --no-cache-dir -r requirements.txt
 COPY . .
 
 # Expose the port that the Flask application will run on
-EXPOSE 6000
+EXPOSE 8000
 
 ENV APP_ENV=local
 ENV APP_DEBUG=True
-ENV APP_PORT=6000
-ENV DB_URL=mongodb+srv://application:CodeLabs011013@socialabs-database.global.mongocluster.cosmos.azure.com
+ENV APP_PORT=8000
+ENV DB_URL=mongodb+srv://application:skripsi@socialabs.pjkgs8t.mongodb.net/
 ENV DB_NAME=tweets
-ENV AZURE_OPENAI_KEY=4LpCIE7GP3QfCliKOSyLSu44HWGSJUeMAzcfSqgj8XS5EflenP1sJQQJ99AJACYeBjFXJ3w3AAAAACOG4ECn
-ENV AZURE_OPENAI_ENDPOINT=https://socialabs-llm.openai.azure.com/
-ENV AZURE_OPENAI_MODEL_NAME=socialabs-gpt-35
-ENV RABBITMQ_URL=amqp://application:CodeLabs011013@20.40.101.128:5672
+ENV AZURE_OPENAI_KEY=6YwpSUX7CKAhTAWRFieW7zj7Q3OoXJNtjGOCsvZsFnTN7g7MyX7SJQQJ99BGACYeBjFXJ3w3AAABACOGG9Qs
+ENV AZURE_OPENAI_ENDPOINT=https://research-etm.openai.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview
+ENV AZURE_OPENAI_MODEL_VERSION="2025-01-01-preview"
+ENV AZURE_OPENAI_DEPLOYMENT=o4-mini
+ENV AZURE_OPENAI_MODEL_NAME=o4-mini
+ENV RABBITMQ_URL=amqp://admin:admin123@70.153.61.68:5672/socialabs
 
+# AZURE_OPENAI_KEY="6YwpSUX7CKAhTAWRFieW7zj7Q3OoXJNtjGOCsvZsFnTN7g7MyX7SJQQJ99BGACYeBjFXJ3w3AAABACOGG9Qs"
+# AZURE_OPENAI_ENDPOINT="https://research-etm.openai.azure.com/openai/deployments/o4-mini/chat/completions?api-version=2025-01-01-preview"
+# AZURE_OPENAI_MODEL_VERSION="2025-01-01-preview"
+# AZURE_OPENAI_DEPLOYMENT="o4-mini"
 # Copy the Gunicorn configuration file
 COPY gunicorn_config.py gunicorn_config.py
 

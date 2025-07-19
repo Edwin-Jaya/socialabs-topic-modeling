@@ -117,4 +117,4 @@ def start_app():
     load_dotenv()
     app_port = int(os.getenv('APP_PORT', 6000))
     app_debug = os.getenv('APP_DEBUG', 'True') == 'True'
-    app.run(debug=app_debug, port=app_port)
+    app.run(debug=app_debug, port=8000)
