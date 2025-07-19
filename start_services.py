@@ -8,7 +8,7 @@ def start_app():
 
     if os.name == "nt":
         # if os windows not run with gunicorn
-        subprocess.run(["flask", "run", "--host", "localhost", "--port", "5000"])
+        subprocess.run(["flask", "run", "--host", "localhost", "--port", "8000"])
     else :
         subprocess.run(["gunicorn", "--config", "gunicorn_config.py", "app:app"])
 
