@@ -23,7 +23,7 @@ jobs:
         login-server: ${{ secrets.AZURE_ECR_HUB }}
     - name: Build and push Docker image
       run: |
-        echo "Building Image with Tag {{github.sha}}, lastest"
+        echo "Building Image with Tag ${{github.sha}}, lastest"
         docker build -t ${{secrets.AZURE_ECR_HUB}}/topic-modelling:${{ github.sha }} -t ${{secrets.AZURE_ECR_HUB}}/topic-modeling:latest .
         echo "Push Image to Azure Container Registry ......."
         docker push ${{secrets.AZURE_ECR_HUB}}/topic-modelling --all-tags
