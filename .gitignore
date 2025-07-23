@@ -3,3 +3,5 @@ venv
 
 __pycache__
 .env
+
+src/utils/idwiki_word2vec_100_new_lower.txt
