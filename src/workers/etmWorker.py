@@ -36,7 +36,7 @@ class TemplateWorker(Worker):
 
         # add your worker initialization code here
 
-        dataset_path = "../temp/octis_data"
+        dataset_path = "../utils/octis_data"
         self.dataset = Dataset()
         self.dataset.load_custom_dataset_from_folder(dataset_path)
 
