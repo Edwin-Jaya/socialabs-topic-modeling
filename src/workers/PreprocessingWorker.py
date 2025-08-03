@@ -176,12 +176,12 @@ class PreprocessingWorker(Worker):
                 prompt = f"""
     You are given a list of {batch_size} posts from an {keyword} community on a social network.
     For each post in the list:
-    - If the post is already in Indonesian, rephrase it into formal Bahasa Indonesia.
-    - If the post is in a foreign language, translate and rephrase it into formal Bahasa Indonesia.
+    - If the post is already in Indonesian, rephrase it into a more detail version formal Bahasa Indonesia with at least 70 words.
+    - If the post is in a foreign language, translate and rephrase it into more detail version formal Bahasa Indonesia with at least 70 words.
 
-    Return your answer as a Python list of strings, containing only the final formal Indonesian version of each post.
+    Return your answer as a Python list of strings, containing only the more detail version final formal Indonesian version of each post.
     Return your answer as a Python list of {batch_size} strings, in the same order as the input.
-    Do NOT include the original text or any translation notes—only the final formal Indonesian versions.
+    Do NOT include the original text or any translation notes—only the more detail version final formal Indonesian versions.
 
     Topic: {keyword}
     Explanation: {explanation}

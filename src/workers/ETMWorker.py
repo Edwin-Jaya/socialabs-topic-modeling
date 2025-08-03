@@ -101,17 +101,15 @@ class ETMWorker(Worker):
         log(f"Creating and training ETM model with {num_topics} topics", "info")
         model = ETM(
             num_topics=num_topics,
-            num_epochs=100,
-            batch_size=256,
+            num_epochs=300,
+            batch_size=64,
             dropout=0.3,
-            activation="tanh",
-            embeddings_path="./../wiki/idwiki_word2vec_100_new_lower.txt",
+            embeddings_path="idwiki_word2vec_100_new_lower.txt",
             embeddings_type="word2vec",
-            t_hidden_size=512,
-            wdecay=1e-5,
-            lr=0.001,
-            optimizer='SGD',
-        
+            t_hidden_size=128,
+            wdecay=1e-4,
+            lr=0.002,
+            optimizer='rmsprop'
         )
         model_output = model.train_model(self.dataset)
         
