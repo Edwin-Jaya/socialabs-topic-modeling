@@ -37,7 +37,7 @@ class ETMWorker(Worker):
 
         #### add your worker initialization code here
         
-        self.dataset_path = './src/vocabs/octis_data/'
+        self.dataset_path = 'src/vocabs/octis_data/'
         self.dataset =Dataset()
         self.dataset.load_custom_dataset_from_folder(self.dataset_path)
         log("ETMWorker initialized", "info")
@@ -97,6 +97,7 @@ class ETMWorker(Worker):
     
     
     def create_and_train_etm(self, num_topics):
+      num_topics=4
       try:
         log(f"Creating and training ETM model with {num_topics} topics", "info")
         model = ETM(
