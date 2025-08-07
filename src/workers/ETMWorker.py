@@ -97,7 +97,6 @@ class ETMWorker(Worker):
     
     
     def create_and_train_etm(self, num_topics):
-      num_topics=4
       try:
         log(f"Creating and training ETM model with {num_topics} topics", "info")
         model = ETM(
@@ -105,9 +104,7 @@ class ETMWorker(Worker):
             num_epochs=300,
             batch_size=64,
             dropout=0.3,
-            embeddings_path="idwiki_word2vec_100_new_lower.txt",
-            embeddings_type="word2vec",
-            t_hidden_size=128,
+            t_hidden_size=256,
             wdecay=1e-4,
             lr=0.002,
             optimizer='rmsprop'
@@ -124,7 +121,7 @@ class ETMWorker(Worker):
         best_topic = None
 
         coh_score_list = []
-        topics = range(1, 7)
+        topics = range(2, 9)
 
         # 2) Parallel execution
         results = Parallel(n_jobs=-1)(
