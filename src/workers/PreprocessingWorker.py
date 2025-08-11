@@ -409,15 +409,9 @@ class PreprocessingWorker(Worker):
         tf_idf_array = tf_idf_vector.toarray()
         words_set = tr_idf_model.get_feature_names_out()
         df_tf_idf = pandas.DataFrame(tf_idf_array, columns = words_set)
-        columns_with_one = df_tf_idf.columns[(df_tf_idf > 0.7).any()].tolist()
+        columns_with_one = df_tf_idf.columns[(df_tf_idf > 0.8).any()].tolist()
         word_freq = Counter(word for doc in tweets for word in doc)
-        if (len(tweets))>=10000:
-            rare_words = [word for word, freq in word_freq.items() if freq <= 10]
-        elif (len(tweets))<10000 and (len(tweets))>=100:
-            rare_words = [word for word, freq in word_freq.items() if freq < 2]
-        else:
-            # rare_words = [word for word, freq in word_freq.items() if freq < 2]
-            rare_words = [""]
+        rare_words = [word for word, freq in word_freq.items() if freq < 5]
         return columns_with_one, rare_words
     
     def stopword_removal(self, tweets):
@@ -462,8 +456,8 @@ class PreprocessingWorker(Worker):
     def split_dataset(self, tweets):
 
         # Compute split indices
-        train_size = int(0.85 * len(tweets))
-        val_size = int(0.05 * len(tweets))
+        train_size = int(0.80 * len(tweets))
+        val_size = int(0.10 * len(tweets))
 
         # Label rows
         tweets['label'] = numpy.where(
